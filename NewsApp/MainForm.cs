@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace NewsApp
 {
@@ -16,9 +17,31 @@ namespace NewsApp
     {
       InitializeComponent();
     }
+    
+    private MySqlConnection conn;
+    private MySqlDataAdapter adapter;
+    private DataSet dataSet;
 
     private void MainForm_Load(object sender, EventArgs e)
     {
+      string connStr = "server=db.donote.co;port=3306;database=news;uid=news;pwd=1111";
+      conn = new MySqlConnection(connStr);
+      adapter = new MySqlDataAdapter();
+      dataSet = new DataSet();
+      
+      try
+      {
+        conn.Open();
+        if (conn.State != ConnectionState.Open)
+        {
+          MessageBox.Show("What happened to the internet?");
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+      
       comboBox1.SelectedIndex = 0;
     }
 
