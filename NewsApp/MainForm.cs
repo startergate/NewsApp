@@ -86,7 +86,7 @@ namespace NewsApp
             };
             var tickets = new NewsView(sess) {Location = this.Location, StartPosition = this.StartPosition};
 
-            MessageBox.Show(sess.Id + " " + sess.Name);
+            MessageBox.Show(sess.Name + "님의 아이디는 " + sess.Id + " 입니다.");
 
             tickets.Show();
             this.Hide();
