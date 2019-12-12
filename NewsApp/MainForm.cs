@@ -34,7 +34,7 @@ namespace NewsApp
         conn.Open();
         if (conn.State != ConnectionState.Open)
         {
-          MessageBox.Show("What happened to the internet?");
+          MessageBox.Show("Warning! Can't Load Database.");
         }
       }
       catch (Exception ex)
@@ -52,7 +52,25 @@ namespace NewsApp
       {
         case 0:
           // TODO: Login Process
+          string sql = "SELECT * FROM users WHERE userid = @id";
           
+          adapter.SelectCommand = new MySqlCommand(sql, conn);
+          adapter.SelectCommand.Parameters.AddWithValue("@id", int.Parse(textBox1.Text));
+
+          if (adapter.Fill(dataSet) > 0)
+          {
+            Session sess = new Session()
+            {
+              Id = (int) dataSet.Tables["Table"].Rows[0]["userid"],
+              Name = (string) dataSet.Tables["Table"].Rows[0]["name"]
+            };
+            var tickets = new NewsView(sess) {Location = this.Location, StartPosition = this.StartPosition};
+      
+            MessageBox.Show(sess.Id + " " + sess.Name);
+
+            tickets.Show();
+            this.Hide();
+          }
           break;
         case 1:
           // TODO: Register Process
