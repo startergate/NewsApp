@@ -1,2 +1,2 @@
-# NewsApp
-NewsApp is News App
+# Not a NAVER News
+Not-a-NAVER-News is not a NAVER news
