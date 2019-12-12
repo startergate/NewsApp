@@ -31,10 +31,17 @@ namespace NewsApp
     /// </summary>
     private void InitializeComponent()
     {
-      this.components = new System.ComponentModel.Container();
+      this.SuspendLayout();
+      // 
+      // NewsView
+      // 
+      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(800, 450);
+      this.ClientSize = new System.Drawing.Size(800, 562);
+      this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.Name = "NewsView";
       this.Text = "NewsView";
+      this.ResumeLayout(false);
     }
 
     #endregion

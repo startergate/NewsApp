@@ -89,8 +89,6 @@ namespace NewsApp
             tickets.Show();
             this.Hide();
           }
-
-          
           break;
         default:
           MessageBox.Show("TF you doing here nigga, identify yourself, who tf are you");
@@ -113,6 +111,21 @@ namespace NewsApp
         default:
           MessageBox.Show("STOP RIGHT THERE, CRIMINAL SCUM!");
           break;
+      }
+    }
+
+    protected override void OnFormClosing(FormClosingEventArgs e)
+    {
+      base.OnFormClosing(e);
+      
+      if (MessageBox.Show("진짜로 종료하시겠습니까?", "종료", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+      {
+        Application.Exit();
+        return;
+      }
+      else
+      {
+        e.Cancel = true;
       }
     }
   }

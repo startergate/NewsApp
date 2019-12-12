@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace NewsApp
 {
@@ -10,6 +11,21 @@ namespace NewsApp
     {
       InitializeComponent();
       this.sess = sess;
+    }
+    
+    protected override void OnFormClosing(FormClosingEventArgs e)
+    {
+      base.OnFormClosing(e);
+      
+      if (MessageBox.Show("진짜로 종료하시겠습니까?", "종료", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+      {
+        Application.Exit();
+        return;
+      }
+      else
+      {
+        e.Cancel = true;
+      }
     }
   }
 }
