@@ -64,8 +64,6 @@ namespace NewsApp
               Name = (string) dataSet.Tables["Table"].Rows[0]["name"]
             };
             var tickets = new NewsView(sess) {Location = this.Location, StartPosition = this.StartPosition};
-      
-            MessageBox.Show(sess.Id + " " + sess.Name);
 
             tickets.Show();
             this.Hide();
