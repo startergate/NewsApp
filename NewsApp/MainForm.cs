@@ -51,10 +51,9 @@ namespace NewsApp
       switch (comboBox1.SelectedIndex)
       {
         case 0:
-          // TODO: Login Process
-          string sql = "SELECT * FROM users WHERE userid = @id";
+          string sqlSelect = "SELECT * FROM users WHERE userid = @id";
           
-          adapter.SelectCommand = new MySqlCommand(sql, conn);
+          adapter.SelectCommand = new MySqlCommand(sqlSelect, conn);
           adapter.SelectCommand.Parameters.AddWithValue("@id", int.Parse(textBox1.Text));
 
           if (adapter.Fill(dataSet) > 0)
@@ -73,7 +72,27 @@ namespace NewsApp
           }
           break;
         case 1:
-          // TODO: Register Process
+          string sqlInsert = "INSERT INTO users (name) VALUES (@name)";
+
+          adapter.InsertCommand = new MySqlCommand(sqlInsert, conn);
+          adapter.InsertCommand.Parameters.AddWithValue("@name", textBox1.Text);
+
+          if (adapter.InsertCommand.ExecuteNonQuery() > 0)
+          {
+            Session sess = new Session()
+            {
+              Id = (int) adapter.InsertCommand.LastInsertedId,
+              Name = textBox1.Text
+            };
+            var tickets = new NewsView(sess) {Location = this.Location, StartPosition = this.StartPosition};
+
+            MessageBox.Show(sess.Id + " " + sess.Name);
+
+            tickets.Show();
+            this.Hide();
+          }
+
+          
           break;
         default:
           MessageBox.Show("TF you doing here nigga, identify yourself, who tf are you");
