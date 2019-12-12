@@ -34,7 +34,7 @@ namespace NewsApp
         conn.Open();
         if (conn.State != ConnectionState.Open)
         {
-          MessageBox.Show("Warning! Can't Load Database.");
+          MessageBox.Show("Warning! Can't Connect to the Database.");
         }
       }
       catch (Exception ex)
