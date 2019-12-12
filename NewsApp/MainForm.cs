@@ -29,6 +29,20 @@ namespace NewsApp
 
     private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
+      switch (comboBox1.SelectedIndex)
+      {
+        case 0:
+          label2.Text = "아이디";
+          button1.Text = "로그인";
+          break;
+        case 1:
+          label2.Text = "이름";
+          button1.Text = "회원가입";
+          break;
+        default:
+          MessageBox.Show("STOP RIGHT THERE, CRIMINAL SCUM!");
+          break;
+      }
     }
   }
 }
