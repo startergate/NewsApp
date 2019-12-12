@@ -48,6 +48,19 @@ namespace NewsApp
     private void button1_Click(object sender, EventArgs e)
     {
       // TODO: DB 연결해서 회원가입 / 로그인
+      switch (comboBox1.SelectedIndex)
+      {
+        case 0:
+          // TODO: Login Process
+          
+          break;
+        case 1:
+          // TODO: Register Process
+          break;
+        default:
+          MessageBox.Show("TF you doing here nigga, identify yourself, who tf are you");
+          break;
+      }
     }
 
     private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
