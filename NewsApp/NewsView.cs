@@ -27,5 +27,12 @@ namespace NewsApp
         e.Cancel = true;
       }
     }
+
+    private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+      var newsEditForm = new NewsEditForm(sess) {Location = this.Location, StartPosition = this.StartPosition};
+      newsEditForm.ShowDialog();
+    }
+
   }
 }
