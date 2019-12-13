@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace NewsApp
 {
@@ -12,6 +14,10 @@ namespace NewsApp
       InitializeComponent();
       this.sess = sess;
     }
+    
+    private MySqlConnection conn;
+    private MySqlDataAdapter adapter;
+    private DataSet dataSet;
     
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
@@ -34,5 +40,39 @@ namespace NewsApp
       newsEditForm.ShowDialog();
     }
 
+    private void NewsView_Load(object sender, EventArgs e)
+    {
+      string connStr = "server=db.donote.co;port=3306;database=news;uid=news;pwd=1111";
+      conn = new MySqlConnection(connStr);
+      adapter = new MySqlDataAdapter();
+      dataSet = new DataSet();
+      
+      try
+      {
+        conn.Open();
+        if (conn.State != ConnectionState.Open)
+        {
+          MessageBox.Show("Warning! Can't Connect to the Database.");
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+      
+      loadDataGridAll();
+    }
+
+    private void loadDataGridAll()
+    {
+      string sql = "SELECT * FROM news ORDER BY newsid DESC LIMIT 50";
+
+      adapter.SelectCommand = new MySqlCommand(sql, conn);
+
+      if (adapter.Fill(dataSet) > 0)
+      {
+        dataGridView1.DataSource = dataSet.Tables["Table"];
+      }
+    }
   }
 }
