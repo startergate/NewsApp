@@ -72,6 +72,9 @@ namespace NewsApp
       if (adapter.Fill(dataSet) > 0)
       {
         dataGridView1.DataSource = dataSet.Tables["Table"];
+        dataGridView1.Columns["newsid"].Visible = false;
+        dataGridView1.Columns["pressid"].Visible = false;
+        dataGridView1.Columns["rptid"].Visible = false;
       }
     }
   }
