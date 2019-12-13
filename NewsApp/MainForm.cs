@@ -82,11 +82,11 @@ namespace NewsApp
               Id = (int) adapter.InsertCommand.LastInsertedId,
               Name = textBox1.Text
             };
-            var tickets = new NewsView(sess) {Location = this.Location, StartPosition = this.StartPosition};
+            var newsView = new NewsView(sess) {Location = this.Location, StartPosition = this.StartPosition};
 
             MessageBox.Show(sess.Name + "님의 아이디는 " + sess.Id + " 입니다.", "가입 완료!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            tickets.Show();
+            newsView.Show();
             this.Hide();
           }
           break;
