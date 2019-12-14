@@ -40,12 +40,18 @@ namespace NewsApp
       this.buttonInsert = new System.Windows.Forms.Button();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.SuspendLayout();
+      // 
+      // textBoxTitle
+      // 
       this.textBoxTitle.Location = new System.Drawing.Point(12, 14);
       this.textBoxTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxTitle.Name = "textBoxTitle";
       this.textBoxTitle.ReadOnly = true;
       this.textBoxTitle.Size = new System.Drawing.Size(776, 23);
       this.textBoxTitle.TabIndex = 0;
+      // 
+      // textBoxContent
+      // 
       this.textBoxContent.Location = new System.Drawing.Point(12, 42);
       this.textBoxContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxContent.Multiline = true;
@@ -53,18 +59,27 @@ namespace NewsApp
       this.textBoxContent.ReadOnly = true;
       this.textBoxContent.Size = new System.Drawing.Size(776, 482);
       this.textBoxContent.TabIndex = 1;
+      // 
+      // textBoxPress
+      // 
       this.textBoxPress.Location = new System.Drawing.Point(12, 529);
       this.textBoxPress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxPress.Name = "textBoxPress";
       this.textBoxPress.ReadOnly = true;
       this.textBoxPress.Size = new System.Drawing.Size(109, 23);
       this.textBoxPress.TabIndex = 2;
+      // 
+      // textBoxRpt
+      // 
       this.textBoxRpt.Location = new System.Drawing.Point(127, 529);
       this.textBoxRpt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxRpt.Name = "textBoxRpt";
       this.textBoxRpt.ReadOnly = true;
       this.textBoxRpt.Size = new System.Drawing.Size(109, 23);
       this.textBoxRpt.TabIndex = 3;
+      // 
+      // buttonDelete
+      // 
       this.buttonDelete.Location = new System.Drawing.Point(684, 529);
       this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonDelete.Name = "buttonDelete";
@@ -74,6 +89,9 @@ namespace NewsApp
       this.buttonDelete.UseVisualStyleBackColor = true;
       this.buttonDelete.Visible = false;
       this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+      // 
+      // buttonUpdate
+      // 
       this.buttonUpdate.Location = new System.Drawing.Point(575, 529);
       this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonUpdate.Name = "buttonUpdate";
@@ -83,6 +101,9 @@ namespace NewsApp
       this.buttonUpdate.UseVisualStyleBackColor = true;
       this.buttonUpdate.Visible = false;
       this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+      // 
+      // buttonInsert
+      // 
       this.buttonInsert.Location = new System.Drawing.Point(466, 529);
       this.buttonInsert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonInsert.Name = "buttonInsert";
@@ -92,11 +113,18 @@ namespace NewsApp
       this.buttonInsert.UseVisualStyleBackColor = true;
       this.buttonInsert.Visible = false;
       this.buttonInsert.Click += new System.EventHandler(this.buttonInsert_Click);
+      // 
+      // comboBox1
+      // 
       this.comboBox1.FormattingEnabled = true;
       this.comboBox1.Location = new System.Drawing.Point(242, 529);
+      this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.comboBox1.Name = "comboBox1";
       this.comboBox1.Size = new System.Drawing.Size(105, 23);
       this.comboBox1.TabIndex = 7;
+      // 
+      // NewsEditForm
+      // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 562);
@@ -108,6 +136,7 @@ namespace NewsApp
       this.Controls.Add(this.textBoxPress);
       this.Controls.Add(this.textBoxContent);
       this.Controls.Add(this.textBoxTitle);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.Name = "NewsEditForm";
       this.Text = "NewsEditForm";
