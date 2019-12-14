@@ -36,7 +36,7 @@ namespace NewsApp
 
     private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-      var newsEditForm = new NewsEditForm(sess) {Location = this.Location, StartPosition = this.StartPosition};
+      var newsEditForm = new NewsEditForm(sess, new News(dataGridView1.SelectedRows[0])) {Location = this.Location, StartPosition = this.StartPosition};
       newsEditForm.ShowDialog();
     }
 
@@ -65,7 +65,7 @@ namespace NewsApp
 
     private void loadDataGridAll()
     {
-      string sql = "SELECT * FROM news_with_press_reporter ORDER BY newsid DESC LIMIT 50";
+      const string sql = "SELECT * FROM news_with_press_reporter ORDER BY newsid DESC LIMIT 50";
 
       adapter.SelectCommand = new MySqlCommand(sql, conn);
 
