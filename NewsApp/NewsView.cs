@@ -195,5 +195,10 @@ namespace NewsApp
       var reporterView = new ReporterView {Location = this.Location, StartPosition = this.StartPosition};
       reporterView.ShowDialog();
     }
+
+    private void btnPress_Click(object sender, EventArgs e)
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

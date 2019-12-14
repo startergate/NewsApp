@@ -48,6 +48,7 @@ namespace NewsApp
       this.button1 = new System.Windows.Forms.Button();
       this.button2 = new System.Windows.Forms.Button();
       this.btnReporter = new System.Windows.Forms.Button();
+      this.btnPress = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
       this.SuspendLayout();
       // 
@@ -214,12 +215,26 @@ namespace NewsApp
       this.btnReporter.Text = "기자 목록 보기";
       this.btnReporter.UseVisualStyleBackColor = true;
       this.btnReporter.Visible = false;
+      this.btnReporter.Click += new System.EventHandler(this.btnReporter_Click);
+      // 
+      // btnPress
+      // 
+      this.btnPress.Location = new System.Drawing.Point(653, 80);
+      this.btnPress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.btnPress.Name = "btnPress";
+      this.btnPress.Size = new System.Drawing.Size(135, 32);
+      this.btnPress.TabIndex = 17;
+      this.btnPress.Text = "제공 언론 목록 보기";
+      this.btnPress.UseVisualStyleBackColor = true;
+      this.btnPress.Visible = false;
+      this.btnPress.Click += new System.EventHandler(this.btnPress_Click);
       // 
       // NewsView
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 562);
+      this.Controls.Add(this.btnPress);
       this.Controls.Add(this.btnReporter);
       this.Controls.Add(this.button2);
       this.Controls.Add(this.button1);
@@ -266,5 +281,6 @@ namespace NewsApp
     private System.Windows.Forms.ComboBox comboBoxPress;
     private System.Windows.Forms.TextBox textBoxRpt;
     private System.Windows.Forms.Button btnReporter;
+    private System.Windows.Forms.Button btnPress;
   }
 }
