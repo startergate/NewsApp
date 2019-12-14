@@ -135,7 +135,21 @@ namespace NewsApp
 
     private void buttonDelete_Click(object sender, EventArgs e)
     {
-      throw new System.NotImplementedException();
+      const string sql = "DELETE FROM news WHERE newsid = @newsid";
+      
+      adapter.DeleteCommand = new MySqlCommand(sql, conn);
+
+      adapter.DeleteCommand.Parameters.AddWithValue("@newsid", news.newsid);
+      
+      if (adapter.InsertCommand.ExecuteNonQuery() > 0)
+      {
+        MessageBox.Show("기사를 삭제했습니다.");
+        Close();
+      }
+      else 
+      {
+        MessageBox.Show("에러 발생. 기사를 삭제할 수 없습니다.");
+      }
     }
   }
 }
