@@ -18,6 +18,7 @@ namespace NewsApp
       if (sess.PressId != 0)
       {
         btnNew.Visible = true;
+        btnReporter.Visible = true;
       }
     }
     
@@ -107,7 +108,8 @@ namespace NewsApp
       adapter.SelectCommand = new MySqlCommand(sql, conn);
 
       if (adapter.Fill(dataSet) > 0)
-      {dataSet.Clear();
+      {
+        dataSet.Clear();
         adapter.Fill(dataSet);
         dataGridView1.DataSource = dataSet.Tables["Table"].DefaultView.ToTable(true);
         dataGridView1.Columns["newsid"].Visible = false;

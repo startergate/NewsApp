@@ -47,7 +47,7 @@ namespace NewsApp
       this.label6 = new System.Windows.Forms.Label();
       this.button1 = new System.Windows.Forms.Button();
       this.button2 = new System.Windows.Forms.Button();
-      this.button3 = new System.Windows.Forms.Button();
+      this.btnReporter = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
       this.SuspendLayout();
       // 
@@ -204,23 +204,23 @@ namespace NewsApp
       this.button2.UseVisualStyleBackColor = true;
       this.button2.Click += new System.EventHandler(this.button2_Click);
       // 
-      // button3
+      // btnReporter
       // 
-      this.button3.Location = new System.Drawing.Point(653, 44);
-      this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(135, 32);
-      this.button3.TabIndex = 16;
-      this.button3.Text = "기자 목록 보기";
-      this.button3.UseVisualStyleBackColor = true;
-      this.button3.Visible = false;
+      this.btnReporter.Location = new System.Drawing.Point(653, 44);
+      this.btnReporter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.btnReporter.Name = "btnReporter";
+      this.btnReporter.Size = new System.Drawing.Size(135, 32);
+      this.btnReporter.TabIndex = 16;
+      this.btnReporter.Text = "기자 목록 보기";
+      this.btnReporter.UseVisualStyleBackColor = true;
+      this.btnReporter.Visible = false;
       // 
       // NewsView
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 562);
-      this.Controls.Add(this.button3);
+      this.Controls.Add(this.btnReporter);
       this.Controls.Add(this.button2);
       this.Controls.Add(this.button1);
       this.Controls.Add(this.comboBoxSec);
@@ -265,6 +265,6 @@ namespace NewsApp
     private System.Windows.Forms.ComboBox comboBoxSec;
     private System.Windows.Forms.ComboBox comboBoxPress;
     private System.Windows.Forms.TextBox textBoxRpt;
-    private System.Windows.Forms.Button button3;
+    private System.Windows.Forms.Button btnReporter;
   }
 }
