@@ -49,6 +49,9 @@ namespace NewsApp
       this.button2 = new System.Windows.Forms.Button();
       this.btnReporter = new System.Windows.Forms.Button();
       this.btnPress = new System.Windows.Forms.Button();
+      this.buttonExcel = new System.Windows.Forms.Button();
+      this.buttonText = new System.Windows.Forms.Button();
+      this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
       ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
       this.SuspendLayout();
       // 
@@ -229,11 +232,35 @@ namespace NewsApp
       this.btnPress.Visible = false;
       this.btnPress.Click += new System.EventHandler(this.btnPress_Click);
       // 
+      // buttonExcel
+      // 
+      this.buttonExcel.Location = new System.Drawing.Point(653, 116);
+      this.buttonExcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.buttonExcel.Name = "buttonExcel";
+      this.buttonExcel.Size = new System.Drawing.Size(135, 32);
+      this.buttonExcel.TabIndex = 18;
+      this.buttonExcel.Text = "엑셀 파일로 저장";
+      this.buttonExcel.UseVisualStyleBackColor = true;
+      this.buttonExcel.Click += new System.EventHandler(this.buttonExcel_Click);
+      // 
+      // buttonText
+      // 
+      this.buttonText.Location = new System.Drawing.Point(653, 152);
+      this.buttonText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.buttonText.Name = "buttonText";
+      this.buttonText.Size = new System.Drawing.Size(135, 32);
+      this.buttonText.TabIndex = 19;
+      this.buttonText.Text = "텍스트 파일로 저장";
+      this.buttonText.UseVisualStyleBackColor = true;
+      this.buttonText.Click += new System.EventHandler(this.buttonText_Click);
+      // 
       // NewsView
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 562);
+      this.Controls.Add(this.buttonText);
+      this.Controls.Add(this.buttonExcel);
       this.Controls.Add(this.btnPress);
       this.Controls.Add(this.btnReporter);
       this.Controls.Add(this.button2);
@@ -282,5 +309,8 @@ namespace NewsApp
     private System.Windows.Forms.TextBox textBoxRpt;
     private System.Windows.Forms.Button btnReporter;
     private System.Windows.Forms.Button btnPress;
+    private System.Windows.Forms.Button buttonExcel;
+    private System.Windows.Forms.Button buttonText;
+    private System.Windows.Forms.SaveFileDialog saveFileDialog1;
   }
 }

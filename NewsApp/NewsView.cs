@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace NewsApp
 {
@@ -200,5 +203,102 @@ namespace NewsApp
       var pressView = new PressView {Location = this.Location, StartPosition = this.StartPosition};
       pressView.ShowDialog();
     }
+    
+    private void SaveExcelFile(string fileName)
+        {
+            // 1. 엑셀 사용에 필요한 객체들 생성
+            Excel.Application eApp; // 엑셀 프로그램
+            Excel.Workbook eWorkbook; // 엑셀 시트를 여러개 포함하는 단위
+            Excel.Worksheet eWorkSheet; // 엑셀 워크시트
+
+            eApp = new Excel.ApplicationClass();
+            eWorkbook = eApp.Workbooks.Add(); // eApp에 워크북 추가
+            eWorkSheet = (Excel.Worksheet) eWorkbook.Sheets[1]; // 엑셀 워크시트는 index가 1부터 시작
+            eWorkbook.Activate();
+            
+            // 2. 엑셀에 저장할 데이터를 2차원 배열 형태로 준비
+            string[,] dataArr;
+            int colCount = dataSet.Tables["Table"].Columns.Count + 1, rowCount = dataSet.Tables["Table"].Rows.Count + 1;
+            dataArr = new string[rowCount,colCount];
+            
+            // 2-1. Column 이름 저장
+            for (int i = 0; i < dataSet.Tables["Table"].Columns.Count; i++)
+            {
+                dataArr[0, i] = dataSet.Tables["Table"].Columns[i].ColumnName;
+            }
+            
+            // 2-2. 행 데이터 저장
+            for (int i = 0; i < dataSet.Tables["Table"].Rows.Count; i++)
+            {
+                for (int j = 0; j < dataSet.Tables["Table"].Columns.Count; j++)
+                {
+                    dataArr[i + 1, j] = dataSet.Tables["Table"].Rows[i].ItemArray[j].ToString();
+                }
+            }
+
+            // 3. 준비된 데이터를 엑셀 파일에 저장
+            string endCell = $"E{rowCount}";
+            eWorkSheet.get_Range("AI=:" + endCell).Value = dataArr;
+
+            eWorkbook.SaveAs(fileName, Excel.XlFileFormat.xlWorkbookDefault, Type.Missing,
+                Type.Missing, false, false, Excel.XlSaveAsAccessMode.xlShared, false, false, Type.Missing, Type.Missing,
+                Type.Missing);
+            eWorkbook.Close(false, Type.Missing, Type.Missing);
+            eApp.Quit();
+
+        }
+
+        void SaveTextFile(string fileName)
+        {
+            // SaveFileDialog에서 지정한 파일 경로에 Stream 생성 -> 저장
+            using (StreamWriter sw = new StreamWriter(fileName))
+            {
+                // Column 이름들 저장
+                foreach (DataColumn col in dataSet.Tables["Table"].Columns)
+                {
+                    sw.Write($"{col.ColumnName}\t");
+                }
+                sw.WriteLine();
+                // DataSet의 Row들 저장
+                foreach (DataRow row in dataSet.Tables["Table"].Rows)
+                {
+                    string rowString = "";
+                    foreach (var item in row.ItemArray)
+                    {
+                        rowString += $"{item}\t";
+                    }
+                    sw.WriteLine(rowString);
+                }
+            }
+        }
+
+        private void buttonExcel_Click(object sender, EventArgs e)
+        {
+          if (dataGridView1.RowCount == 0)
+          {
+            MessageBox.Show("저장할 데이터가 없습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+          }
+          
+          if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+          {
+            SaveExcelFile(saveFileDialog1.FileName);
+          }
+        }
+
+        private void buttonText_Click(object sender, EventArgs e)
+        {
+          if (dataGridView1.RowCount == 0)
+          {
+            MessageBox.Show("저장할 데이터가 없습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+          }
+          
+          saveFileDialog1.Filter = "텍스트 파일(*.txt)|*.txt";
+          if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+          {
+            SaveTextFile(saveFileDialog1.FileName);
+          }
+        }
   }
 }
