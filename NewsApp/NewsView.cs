@@ -136,6 +136,22 @@ namespace NewsApp
       {
         conditions.Add("title LIKE \"%" + textBoxTitle.Text + "%\"");
       }
+
+      if (textBoxRpt.Text != "")
+      {
+        conditions.Add("rpt_name = \"" + textBoxRpt.Text + "\"");
+      }
+
+      if (comboBoxPress.SelectedIndex != -1)
+      {
+        conditions.Add("press_name = \"" + comboBoxPress.SelectedItem + "\"");
+      }
+      
+      if (comboBoxSec.SelectedIndex != -1)
+      {
+        conditions.Add("section = \"" + comboBoxSec.SelectedItem + "\"");
+      }
+      
       
       var condition = (conditions.ToArray().Length > 0 ? " WHERE " : "") + String.Join(" AND ", conditions.ToArray());
       
