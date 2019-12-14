@@ -125,5 +125,32 @@ namespace NewsApp
       comboBoxPress.SelectedItem = null;
       comboBoxSec.SelectedItem = null;
     }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+      var sql = "SELECT * FROM sections_with_news";
+
+      List<string> conditions = new List<string>();
+
+      if (textBoxTitle.Text != "")
+      {
+        conditions.Add("title LIKE \"%" + textBoxTitle.Text + "%\"");
+      }
+      
+      var condition = (conditions.ToArray().Length > 0 ? " WHERE " : "") + String.Join(" AND ", conditions.ToArray());
+      
+      adapter.SelectCommand = new MySqlCommand(sql + condition, conn);
+      
+      if (adapter.Fill(dataSet) > 0)
+      {
+        dataSet.Clear();
+        adapter.Fill(dataSet);
+        dataGridView1.DataSource = dataSet.Tables["Table"].DefaultView.ToTable(true);
+      }
+      else
+      {
+        MessageBox.Show("검색된 데이터가 없습니다.");
+      }
+    }
   }
 }
