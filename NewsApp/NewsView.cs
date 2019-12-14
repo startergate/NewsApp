@@ -38,6 +38,11 @@ namespace NewsApp
     {
       var newsEditForm = new NewsEditForm(sess, new News(dataGridView1.SelectedRows[0])) {Location = this.Location, StartPosition = this.StartPosition};
       newsEditForm.ShowDialog();
+
+      if (sess.PressId != 0)
+      {
+        loadDataGridAll();
+      }
     }
 
     private void NewsView_Load(object sender, EventArgs e)
@@ -70,8 +75,9 @@ namespace NewsApp
       adapter.SelectCommand = new MySqlCommand(sql, conn);
 
       if (adapter.Fill(dataSet) > 0)
-      {
-        dataGridView1.DataSource = dataSet.Tables["Table"];
+      {dataSet.Clear();
+        adapter.Fill(dataSet);
+        dataGridView1.DataSource = dataSet.Tables["Table"].DefaultView.ToTable(true);
         dataGridView1.Columns["newsid"].Visible = false;
         dataGridView1.Columns["pressid"].Visible = false;
         dataGridView1.Columns["rptid"].Visible = false;
