@@ -130,7 +130,23 @@ namespace NewsApp
 
     private void buttonUpdate_Click(object sender, EventArgs e)
     {
-      throw new System.NotImplementedException();
+      const string sql = "UPDATE news SET title = @title, content = @content WHERE newsid = @newsid";
+      
+      adapter.UpdateCommand = new MySqlCommand(sql, conn);
+
+      adapter.UpdateCommand.Parameters.AddWithValue("@title", textBoxTitle.Text);
+      adapter.UpdateCommand.Parameters.AddWithValue("@content", textBoxContent.Text);
+      adapter.UpdateCommand.Parameters.AddWithValue("@newsid", news.newsid);
+        
+      if (adapter.UpdateCommand.ExecuteNonQuery() > 0)
+      {
+        MessageBox.Show("기사를 수정했습니다.");
+        Close();
+      }
+      else 
+      {
+        MessageBox.Show("에러 발생. 기사를 수정할 수 없습니다.");
+      }
     }
 
     private void buttonDelete_Click(object sender, EventArgs e)
