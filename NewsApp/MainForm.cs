@@ -58,11 +58,26 @@ namespace NewsApp
 
           if (adapter.Fill(dataSet) > 0)
           {
+            sqlSelect = "SELECT * FROM reporters_with_presses WHERE rptid = @id";
+            
+            adapter.SelectCommand = new MySqlCommand(sqlSelect, conn);
+            adapter.SelectCommand.Parameters.AddWithValue("@id", int.Parse(textBox1.Text));
+
             Session sess = new Session()
             {
               Id = (int) dataSet.Tables["Table"].Rows[0]["userid"],
               Name = (string) dataSet.Tables["Table"].Rows[0]["name"]
             };
+            
+            DataSet dSet = new DataSet();
+            
+            if (adapter.Fill(dSet) > 0)
+            {
+              sess.PressId = (int) dSet.Tables["Table"].Rows[0]["pressid"];
+              sess.PressName = (string) dSet.Tables["Table"].Rows[0]["press_name"];
+              sess.Name = (string) dSet.Tables["Table"].Rows[0]["name"];
+            }
+            
             var tickets = new NewsView(sess) {Location = this.Location, StartPosition = this.StartPosition};
 
             tickets.Show();
