@@ -63,6 +63,20 @@ namespace NewsApp
       }
       
       loadDataGridAll();
+
+      DataSet dsTemp = new DataSet();
+      
+      var sql = "SELECT * FROM sections";
+      
+      adapter.SelectCommand = new MySqlCommand(sql, conn);
+      
+      if (adapter.Fill(dsTemp) > 0)
+      {
+        foreach (DataRow row in dsTemp.Tables["Table"].Rows)
+        {
+          comboBoxSec.Items.Add((string) row["name"]);
+        }
+      }
     }
 
     private void loadDataGridAll()

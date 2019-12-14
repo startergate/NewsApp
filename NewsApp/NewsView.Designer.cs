@@ -79,7 +79,7 @@ namespace NewsApp
       // 
       // textBoxTitle
       // 
-      this.textBoxTitle.Location = new System.Drawing.Point(653, 244);
+      this.textBoxTitle.Location = new System.Drawing.Point(653, 232);
       this.textBoxTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxTitle.Name = "textBoxTitle";
       this.textBoxTitle.Size = new System.Drawing.Size(135, 23);
@@ -87,7 +87,7 @@ namespace NewsApp
       // 
       // label1
       // 
-      this.label1.Location = new System.Drawing.Point(653, 221);
+      this.label1.Location = new System.Drawing.Point(653, 209);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(86, 20);
       this.label1.TabIndex = 3;
@@ -96,7 +96,7 @@ namespace NewsApp
       // 
       // dateTimePickerFrom
       // 
-      this.dateTimePickerFrom.Location = new System.Drawing.Point(653, 438);
+      this.dateTimePickerFrom.Location = new System.Drawing.Point(653, 437);
       this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.dateTimePickerFrom.Name = "dateTimePickerFrom";
       this.dateTimePickerFrom.Size = new System.Drawing.Size(135, 23);
@@ -104,7 +104,7 @@ namespace NewsApp
       // 
       // label2
       // 
-      this.label2.Location = new System.Drawing.Point(653, 415);
+      this.label2.Location = new System.Drawing.Point(653, 414);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(86, 20);
       this.label2.TabIndex = 5;
@@ -130,7 +130,7 @@ namespace NewsApp
       // 
       // label4
       // 
-      this.label4.Location = new System.Drawing.Point(653, 269);
+      this.label4.Location = new System.Drawing.Point(653, 262);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(86, 20);
       this.label4.TabIndex = 8;
@@ -140,7 +140,7 @@ namespace NewsApp
       // comboBoxPress
       // 
       this.comboBoxPress.FormattingEnabled = true;
-      this.comboBoxPress.Location = new System.Drawing.Point(653, 292);
+      this.comboBoxPress.Location = new System.Drawing.Point(653, 285);
       this.comboBoxPress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.comboBoxPress.Name = "comboBoxPress";
       this.comboBoxPress.Size = new System.Drawing.Size(135, 23);
@@ -148,7 +148,7 @@ namespace NewsApp
       // 
       // label5
       // 
-      this.label5.Location = new System.Drawing.Point(653, 318);
+      this.label5.Location = new System.Drawing.Point(653, 314);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(86, 20);
       this.label5.TabIndex = 11;
@@ -157,7 +157,7 @@ namespace NewsApp
       // 
       // textBoxRpt
       // 
-      this.textBoxRpt.Location = new System.Drawing.Point(653, 341);
+      this.textBoxRpt.Location = new System.Drawing.Point(653, 337);
       this.textBoxRpt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxRpt.Name = "textBoxRpt";
       this.textBoxRpt.Size = new System.Drawing.Size(135, 23);
@@ -166,7 +166,7 @@ namespace NewsApp
       // comboBoxSec
       // 
       this.comboBoxSec.FormattingEnabled = true;
-      this.comboBoxSec.Location = new System.Drawing.Point(653, 389);
+      this.comboBoxSec.Location = new System.Drawing.Point(653, 388);
       this.comboBoxSec.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.comboBoxSec.Name = "comboBoxSec";
       this.comboBoxSec.Size = new System.Drawing.Size(135, 23);
@@ -174,7 +174,7 @@ namespace NewsApp
       // 
       // label6
       // 
-      this.label6.Location = new System.Drawing.Point(653, 366);
+      this.label6.Location = new System.Drawing.Point(653, 365);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(86, 20);
       this.label6.TabIndex = 12;
@@ -190,7 +190,6 @@ namespace NewsApp
       this.button1.TabIndex = 14;
       this.button1.Text = "조회";
       this.button1.UseVisualStyleBackColor = true;
-      this.button1.Visible = false;
       // 
       // button2
       // 
@@ -201,7 +200,6 @@ namespace NewsApp
       this.button2.TabIndex = 15;
       this.button2.Text = "리셋";
       this.button2.UseVisualStyleBackColor = true;
-      this.button2.Visible = false;
       this.button2.Click += new System.EventHandler(this.button2_Click);
       // 
       // NewsView
