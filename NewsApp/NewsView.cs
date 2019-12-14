@@ -13,6 +13,11 @@ namespace NewsApp
     {
       InitializeComponent();
       this.sess = sess;
+
+      if (sess.PressId != 0)
+      {
+        btnNew.Visible = true;
+      }
     }
     
     private MySqlConnection conn;
@@ -82,6 +87,14 @@ namespace NewsApp
         dataGridView1.Columns["pressid"].Visible = false;
         dataGridView1.Columns["rptid"].Visible = false;
       }
+    }
+
+    private void btnNew_Click(object sender, EventArgs e)
+    {
+      var newsEditForm = new NewsEditForm(sess) {Location = this.Location, StartPosition = this.StartPosition};
+      newsEditForm.ShowDialog();
+      
+      loadDataGridAll();
     }
   }
 }
