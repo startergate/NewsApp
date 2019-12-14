@@ -28,15 +28,7 @@ namespace NewsApp
     {
       base.OnFormClosing(e);
       
-      if (MessageBox.Show("진짜로 종료하시겠습니까?", "종료", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-      {
-        Application.Exit();
-        return;
-      }
-      else
-      {
-        e.Cancel = true;
-      }
+      Application.Exit();
     }
 
     private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
