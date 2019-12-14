@@ -10,6 +10,7 @@ namespace NewsApp
     public int rptid;
     public string press_name;
     public string rpt_name;
+    public string section;
 
     public News(DataGridViewRow row)
     {
@@ -19,6 +20,7 @@ namespace NewsApp
       rptid = (int) row.Cells["rptid"].Value;
       press_name = (string) row.Cells["press_name"].Value;
       rpt_name = (string) row.Cells["rpt_name"].Value;
+      section = (string) row.Cells["section"].Value;
     }
   }
 }

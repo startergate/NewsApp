@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace NewsApp
 {
@@ -7,6 +9,10 @@ namespace NewsApp
   {
     private Session sess;
     private News news;
+    
+    private MySqlConnection conn;
+    private MySqlDataAdapter adapter;
+    private DataSet dataSet;
     
     public NewsEditForm(Session sess)
     {
@@ -27,8 +33,6 @@ namespace NewsApp
       textBoxContent.Text = news.content;
       textBoxPress.Text = news.press_name;
       textBoxRpt.Text = news.rpt_name;
-
-      MessageBox.Show(news.rptid + " " + sess.Id);
       
       if (news.rptid == sess.Id)
       {
@@ -44,7 +48,43 @@ namespace NewsApp
 
     private void NewsEditForm_Load(object sender, EventArgs e)
     {
+      string connStr = "server=db.donote.co;port=3306;database=news;uid=news;pwd=1111";
+      conn = new MySqlConnection(connStr);
+      adapter = new MySqlDataAdapter();
+      dataSet = new DataSet();
       
+      try
+      {
+        conn.Open();
+        if (conn.State != ConnectionState.Open)
+        {
+          MessageBox.Show("Warning! Can't Connect to the Database.");
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+      
+      const string sql = "SELECT * FROM sections";
+
+      adapter.SelectCommand = new MySqlCommand(sql, conn);
+
+      if (adapter.Fill(dataSet) > 0)
+      {
+        foreach (DataRow row in dataSet.Tables["Table"].Rows)
+        {
+          comboBox1.Items.Add((string) row["name"]);
+        }
+      }
+
+      comboBox1.SelectedIndex = 0;
+
+      if (news.section != "")
+      {
+        MessageBox.Show(news.section);
+        comboBox1.SelectedItem = news.section;
+      }
     }
 
     private void buttonInsert_Click(object sender, EventArgs e)
