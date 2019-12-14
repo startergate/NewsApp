@@ -36,12 +36,29 @@ namespace NewsApp
         textBoxContent.ReadOnly = false;
         textBoxPress.ReadOnly = false;
         textBoxRpt.ReadOnly = false;
+        
+        
       }
     }
 
     private void NewsEditForm_Load(object sender, EventArgs e)
     {
       
+    }
+
+    private void buttonInsert_Click(object sender, EventArgs e)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    private void buttonUpdate_Click(object sender, EventArgs e)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    private void buttonDelete_Click(object sender, EventArgs e)
+    {
+      throw new System.NotImplementedException();
     }
   }
 }

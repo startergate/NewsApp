@@ -35,6 +35,9 @@ namespace NewsApp
       this.textBoxContent = new System.Windows.Forms.TextBox();
       this.textBoxPress = new System.Windows.Forms.TextBox();
       this.textBoxRpt = new System.Windows.Forms.TextBox();
+      this.buttonDelete = new System.Windows.Forms.Button();
+      this.buttonUpdate = new System.Windows.Forms.Button();
+      this.buttonInsert = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // textBoxTitle
@@ -74,11 +77,46 @@ namespace NewsApp
       this.textBoxRpt.Size = new System.Drawing.Size(109, 23);
       this.textBoxRpt.TabIndex = 3;
       // 
+      // buttonDelete
+      // 
+      this.buttonDelete.Location = new System.Drawing.Point(684, 529);
+      this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.buttonDelete.Name = "buttonDelete";
+      this.buttonDelete.Size = new System.Drawing.Size(103, 22);
+      this.buttonDelete.TabIndex = 4;
+      this.buttonDelete.Text = "삭제";
+      this.buttonDelete.UseVisualStyleBackColor = true;
+      this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+      // 
+      // buttonUpdate
+      // 
+      this.buttonUpdate.Location = new System.Drawing.Point(575, 529);
+      this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.buttonUpdate.Name = "buttonUpdate";
+      this.buttonUpdate.Size = new System.Drawing.Size(103, 22);
+      this.buttonUpdate.TabIndex = 5;
+      this.buttonUpdate.Text = "수정";
+      this.buttonUpdate.UseVisualStyleBackColor = true;
+      // 
+      // buttonInsert
+      // 
+      this.buttonInsert.Location = new System.Drawing.Point(466, 529);
+      this.buttonInsert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.buttonInsert.Name = "buttonInsert";
+      this.buttonInsert.Size = new System.Drawing.Size(103, 22);
+      this.buttonInsert.TabIndex = 6;
+      this.buttonInsert.Text = "생성";
+      this.buttonInsert.UseVisualStyleBackColor = true;
+      this.buttonInsert.Click += new System.EventHandler(this.buttonInsert_Click);
+      // 
       // NewsEditForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 562);
+      this.Controls.Add(this.buttonInsert);
+      this.Controls.Add(this.buttonUpdate);
+      this.Controls.Add(this.buttonDelete);
       this.Controls.Add(this.textBoxRpt);
       this.Controls.Add(this.textBoxPress);
       this.Controls.Add(this.textBoxContent);
@@ -97,5 +135,8 @@ namespace NewsApp
     private System.Windows.Forms.TextBox textBoxContent;
     private System.Windows.Forms.TextBox textBoxPress;
     private System.Windows.Forms.TextBox textBoxRpt;
+    private System.Windows.Forms.Button buttonInsert;
+    private System.Windows.Forms.Button buttonUpdate;
+    private System.Windows.Forms.Button buttonDelete;
   }
 }
