@@ -36,7 +36,7 @@ namespace NewsApp
         MessageBox.Show(ex.Message);
       }
       
-      const string sql = "SELECT * FROM reporters_with_presses ORDER BY rptid DESC";
+      const string sql = "SELECT * FROM reporters_with_presses";
 
       adapter.SelectCommand = new MySqlCommand(sql, conn);
 
