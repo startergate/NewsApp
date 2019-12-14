@@ -189,5 +189,11 @@ namespace NewsApp
         MessageBox.Show("검색된 데이터가 없습니다.");
       }
     }
+
+    private void btnReporter_Click(object sender, EventArgs e)
+    {
+      var reporterView = new ReporterView {Location = this.Location, StartPosition = this.StartPosition};
+      reporterView.ShowDialog();
+    }
   }
 }
