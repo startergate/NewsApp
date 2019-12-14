@@ -36,8 +36,9 @@ namespace NewsApp
         textBoxContent.ReadOnly = false;
         textBoxPress.ReadOnly = false;
         textBoxRpt.ReadOnly = false;
-        
-        
+
+        buttonUpdate.Visible = true;
+        buttonDelete.Visible = true;
       }
     }
 

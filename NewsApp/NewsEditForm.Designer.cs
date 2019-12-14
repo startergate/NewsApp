@@ -86,6 +86,7 @@ namespace NewsApp
       this.buttonDelete.TabIndex = 4;
       this.buttonDelete.Text = "삭제";
       this.buttonDelete.UseVisualStyleBackColor = true;
+      this.buttonDelete.Visible = false;
       this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
       // 
       // buttonUpdate
@@ -97,6 +98,7 @@ namespace NewsApp
       this.buttonUpdate.TabIndex = 5;
       this.buttonUpdate.Text = "수정";
       this.buttonUpdate.UseVisualStyleBackColor = true;
+      this.buttonUpdate.Visible = false;
       this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
       // 
       // buttonInsert
@@ -108,6 +110,7 @@ namespace NewsApp
       this.buttonInsert.TabIndex = 6;
       this.buttonInsert.Text = "생성";
       this.buttonInsert.UseVisualStyleBackColor = true;
+      this.buttonInsert.Visible = false;
       this.buttonInsert.Click += new System.EventHandler(this.buttonInsert_Click);
       // 
       // NewsEditForm
