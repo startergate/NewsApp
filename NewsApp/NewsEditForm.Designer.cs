@@ -97,6 +97,7 @@ namespace NewsApp
       this.buttonUpdate.TabIndex = 5;
       this.buttonUpdate.Text = "수정";
       this.buttonUpdate.UseVisualStyleBackColor = true;
+      this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
       // 
       // buttonInsert
       // 
