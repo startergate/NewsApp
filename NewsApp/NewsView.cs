@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -119,7 +120,10 @@ namespace NewsApp
 
     private void button2_Click(object sender, EventArgs e)
     {
-      throw new System.NotImplementedException();
+      textBoxTitle.Text = "";
+      textBoxRpt.Text = "";
+      comboBoxPress.SelectedItem = null;
+      comboBoxSec.SelectedItem = null;
     }
   }
 }

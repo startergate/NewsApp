@@ -96,7 +96,7 @@ namespace NewsApp
       // 
       // dateTimePickerFrom
       // 
-      this.dateTimePickerFrom.Location = new System.Drawing.Point(653, 437);
+      this.dateTimePickerFrom.Location = new System.Drawing.Point(653, 438);
       this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.dateTimePickerFrom.Name = "dateTimePickerFrom";
       this.dateTimePickerFrom.Size = new System.Drawing.Size(135, 23);
@@ -157,7 +157,7 @@ namespace NewsApp
       // 
       // textBoxRpt
       // 
-      this.textBoxRpt.Location = new System.Drawing.Point(653, 337);
+      this.textBoxRpt.Location = new System.Drawing.Point(653, 338);
       this.textBoxRpt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxRpt.Name = "textBoxRpt";
       this.textBoxRpt.Size = new System.Drawing.Size(135, 23);
@@ -190,6 +190,7 @@ namespace NewsApp
       this.button1.TabIndex = 14;
       this.button1.Text = "조회";
       this.button1.UseVisualStyleBackColor = true;
+      this.button1.Click += new System.EventHandler(this.button1_Click);
       // 
       // button2
       // 
