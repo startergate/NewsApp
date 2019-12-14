@@ -75,7 +75,7 @@ namespace NewsApp
 
     private void loadDataGridAll()
     {
-      const string sql = "SELECT * FROM news_with_press_reporter ORDER BY newsid DESC LIMIT 50";
+      const string sql = "SELECT * FROM sections_with_news ORDER BY newsid DESC LIMIT 50";
 
       adapter.SelectCommand = new MySqlCommand(sql, conn);
 
