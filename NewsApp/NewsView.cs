@@ -24,6 +24,9 @@ namespace NewsApp
     private MySqlConnection conn;
     private MySqlDataAdapter adapter;
     private DataSet dataSet;
+
+    private DateTime dtTo;
+    private DateTime dtFrom;
     
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
@@ -45,6 +48,9 @@ namespace NewsApp
 
     private void NewsView_Load(object sender, EventArgs e)
     {
+      dtFrom = dateTimePickerFrom.Value;
+      dtTo = dateTimePickerTo.Value;
+      
       string connStr = "server=db.donote.co;port=3306;database=news;uid=news;pwd=1111";
       conn = new MySqlConnection(connStr);
       adapter = new MySqlDataAdapter();
@@ -96,7 +102,7 @@ namespace NewsApp
 
     private void loadDataGridAll()
     {
-      const string sql = "SELECT * FROM sections_with_news ORDER BY newsid DESC LIMIT 50";
+      const string sql = "SELECT * FROM sections_with_news ORDER BY created_at DESC LIMIT 50";
 
       adapter.SelectCommand = new MySqlCommand(sql, conn);
 
@@ -151,9 +157,22 @@ namespace NewsApp
       {
         conditions.Add("section = \"" + comboBoxSec.SelectedItem + "\"");
       }
-      
+
+      if (dateTimePickerFrom.Value < dtFrom)
+      {
+        conditions.Add("created_at >= \"" + dateTimePickerFrom.Value + "\"");
+      }
+
+      if (dateTimePickerTo.Value < dtTo)
+      {
+        conditions.Add("created_at <= \"" + dateTimePickerTo.Value + "\"");
+      }
       
       var condition = (conditions.ToArray().Length > 0 ? " WHERE " : "") + String.Join(" AND ", conditions.ToArray());
+
+      MessageBox.Show(condition);
+
+      condition += " ORDER BY created_at DESC LIMIT 50";
       
       adapter.SelectCommand = new MySqlCommand(sql + condition, conn);
       
