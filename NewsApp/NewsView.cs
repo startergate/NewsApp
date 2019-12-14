@@ -212,8 +212,8 @@ namespace NewsApp
 
       eApp = new Excel.ApplicationClass();
       eWorkbook = eApp.Workbooks.Add();
-      eWorkSheet = eWorkbook.Sheets[1];
-            
+      eWorkSheet = (Excel.Worksheet) eWorkbook.Sheets[1];
+
       string[,] dataArr;
       int colCount = dataSet.Tables["Table"].Columns.Count + 1, rowCount = dataSet.Tables["Table"].Rows.Count + 1;
       dataArr = new string[rowCount,colCount];
@@ -230,9 +230,9 @@ namespace NewsApp
           dataArr[i + 1, j] = dataSet.Tables["Table"].Rows[i].ItemArray[j].ToString();
         }
       }
-
-      string endCell = $"E{rowCount}"; 
-      eWorkSheet.get_Range("AI=:" + endCell).Value = dataArr;
+      
+      string endCell = $"I{rowCount}"; 
+      eWorkSheet.get_Range("A1", endCell).Value = dataArr;
       
       eWorkbook.SaveAs(fileName, Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, 
         Type.Missing, false, false, Excel.XlSaveAsAccessMode.xlShared, false, false, Type.Missing, Type.Missing, 
