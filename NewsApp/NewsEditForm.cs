@@ -13,6 +13,7 @@ namespace NewsApp
     
     private MySqlConnection conn;
     private MySqlDataAdapter adapter;
+    private MySqlDataAdapter adapter2;
     private DataSet dataSet;
     
     public NewsEditForm(Session sess)
@@ -60,6 +61,7 @@ namespace NewsApp
       string connStr = "server=db.donote.co;port=3306;database=news;uid=news;pwd=1111";
       conn = new MySqlConnection(connStr);
       adapter = new MySqlDataAdapter();
+      adapter2 = new MySqlDataAdapter();
       dataSet = new DataSet();
       
       try
@@ -97,8 +99,8 @@ namespace NewsApp
 
     private void buttonInsert_Click(object sender, EventArgs e)
     {
-      const string sqlInsert1 =
-        "INSERT INTO `news`.`news` (`title`, `content`, `pressid`, `rptid`, `created_at`) VALUES (@title, @content, @pressid, @rptid, NOW())";
+      var sqlInsert1 =
+        "INSERT INTO news (title, content, pressid, rptid, created_at) VALUES (@title, @content, @pressid, @rptid, NOW())";
       
       adapter.InsertCommand = new MySqlCommand(sqlInsert1, conn);
       adapter.InsertCommand.Parameters.AddWithValue("@title", textBoxTitle.Text);
@@ -106,8 +108,17 @@ namespace NewsApp
       adapter.InsertCommand.Parameters.AddWithValue("@pressid", int.Parse(textBoxPress.Text));
       adapter.InsertCommand.Parameters.AddWithValue("@rptid", int.Parse(textBoxRpt.Text));
 
+      
       if (adapter.InsertCommand.ExecuteNonQuery() > 0)
       {
+        sqlInsert1 = "INSERT INTO sections_has_news (sections_secid, news_newsid) VALUES (@secid, @newsid)";
+              
+        adapter2.InsertCommand = new MySqlCommand(sqlInsert1, conn);
+        adapter2.InsertCommand.Parameters.AddWithValue("@secid", comboBox1.SelectedIndex + 1);
+        adapter2.InsertCommand.Parameters.AddWithValue("@newsid", adapter.InsertCommand.LastInsertedId);
+
+        adapter2.InsertCommand.ExecuteNonQuery();
+        
         MessageBox.Show("기사를 업로드했습니다.");
         Close();
       }
