@@ -77,6 +77,20 @@ namespace NewsApp
           comboBoxSec.Items.Add((string) row["name"]);
         }
       }
+      
+      dsTemp.Clear();
+      
+      sql = "SELECT * FROM presses";
+      
+      adapter.SelectCommand = new MySqlCommand(sql, conn);
+      
+      if (adapter.Fill(dsTemp) > 0)
+      {
+        foreach (DataRow row in dsTemp.Tables["Table"].Rows)
+        {
+          comboBoxPress.Items.Add((string) row["name"]);
+        }
+      }
     }
 
     private void loadDataGridAll()
