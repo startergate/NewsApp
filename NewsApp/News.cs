@@ -6,6 +6,7 @@ namespace NewsApp
   {
     public string title;
     public string content;
+    public int newsid;
     public int pressid;
     public int rptid;
     public string press_name;
@@ -14,6 +15,7 @@ namespace NewsApp
 
     public News(DataGridViewRow row)
     {
+      newsid = (int) row.Cells["newsid"].Value;
       title = (string) row.Cells["title"].Value;
       content = (string) row.Cells["content"].Value;
       pressid = (int) row.Cells["pressid"].Value;
