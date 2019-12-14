@@ -19,6 +19,7 @@ namespace NewsApp
       {
         btnNew.Visible = true;
         btnReporter.Visible = true;
+        btnPress.Visible = true;
       }
     }
     
@@ -172,8 +173,6 @@ namespace NewsApp
       
       var condition = (conditions.ToArray().Length > 0 ? " WHERE " : "") + String.Join(" AND ", conditions.ToArray());
 
-      MessageBox.Show(condition);
-
       condition += " ORDER BY created_at DESC LIMIT 50";
       
       adapter.SelectCommand = new MySqlCommand(sql + condition, conn);
@@ -198,7 +197,8 @@ namespace NewsApp
 
     private void btnPress_Click(object sender, EventArgs e)
     {
-      throw new System.NotImplementedException();
+      var pressView = new PressView {Location = this.Location, StartPosition = this.StartPosition};
+      pressView.ShowDialog();
     }
   }
 }
