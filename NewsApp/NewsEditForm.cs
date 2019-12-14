@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -20,6 +21,16 @@ namespace NewsApp
 
       this.sess = sess;
       news = new News();
+
+      if (sess.Id != 0)
+      {
+        textBoxTitle.ReadOnly = false;
+        textBoxContent.ReadOnly = false;
+        textBoxPress.Text = sess.PressId.ToString();
+        textBoxRpt.Text = sess.Id.ToString();
+
+        buttonInsert.Visible = true;
+      }
     }
     
     public NewsEditForm(Session sess, News news)
@@ -38,8 +49,6 @@ namespace NewsApp
       {
         textBoxTitle.ReadOnly = false;
         textBoxContent.ReadOnly = false;
-        textBoxPress.ReadOnly = false;
-        textBoxRpt.ReadOnly = false;
 
         buttonUpdate.Visible = true;
         buttonDelete.Visible = true;
@@ -82,14 +91,30 @@ namespace NewsApp
 
       if (news.section != "")
       {
-        MessageBox.Show(news.section);
         comboBox1.SelectedItem = news.section;
       }
     }
 
     private void buttonInsert_Click(object sender, EventArgs e)
     {
-      throw new System.NotImplementedException();
+      const string sqlInsert1 =
+        "INSERT INTO `news`.`news` (`title`, `content`, `pressid`, `rptid`, `created_at`) VALUES (@title, @content, @pressid, @rptid, NOW())";
+      
+      adapter.InsertCommand = new MySqlCommand(sqlInsert1, conn);
+      adapter.InsertCommand.Parameters.AddWithValue("@title", textBoxTitle.Text);
+      adapter.InsertCommand.Parameters.AddWithValue("@content", textBoxContent.Text);
+      adapter.InsertCommand.Parameters.AddWithValue("@pressid", int.Parse(textBoxPress.Text));
+      adapter.InsertCommand.Parameters.AddWithValue("@rptid", int.Parse(textBoxRpt.Text));
+
+      if (adapter.InsertCommand.ExecuteNonQuery() > 0)
+      {
+        MessageBox.Show("기사를 업로드했습니다.");
+        Close();
+      }
+      else 
+      {
+        MessageBox.Show("에러 발생. 기사를 업로드 할 수 없습니다.");
+      }
     }
 
     private void buttonUpdate_Click(object sender, EventArgs e)
